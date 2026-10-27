@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Book | Dark Academia Bookstore</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Terra Book.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#collection">Koleksi</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#checkout">Hitung Pesanan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <button id="themeToggle" class="btn-theme">🌙 Mode Terang</button>
+    </nav>
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="hero-content">
+            <h1>Jelajahi Dunia di Balik Lembaran Usang</h1>
+            <p>Koleksi kurasi buku-buku sastra klasik, fiksi sejarah, dan puisi untuk jiwa-jiwa yang haus akan aksara.</p>
+            <a href="#collection" class="btn-primary">Lihat Koleksi</a>
+        </div>
+    </header>
+
+    <!-- Section Koleksi -->
+    <section id="collection">
+        <h2 class="section-title">Rak Buku Kami</h2>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterBooks('semua')">Semua</button>
+            <button class="filter-btn" onclick="filterBooks('sastra')">Sastra Klasik</button>
+            <button class="filter-btn" onclick="filterBooks('puisi')">Puisi</button>
+            <button class="filter-btn" onclick="filterBooks('filsafat')">Filsafat</button>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+            <!-- Di-render otomatis lewat JS -->
+        </div>
+    </section>
+
+    <!-- Section Tentang Kami -->
+    <section id="about">
+        <div class="about-card">
+            <h2 class="section-title">Tentang Terra Book</h2>
+            <p>Berdiri sejak tahun 2018, <strong>Terra Book</strong> hadir sebagai suaka bagi para pencinta literasi klasik dan filsafat. Kami percaya bahwa setiap buku tua menyimpan jiwa dan aroma sejarah yang tak ternilai.</p>
+            <p>Kami merawat dan mengurasi setiap karya terbaik dari para pujangga dan pemikir masa lalu agar tetap hidup dan dapat diresapi oleh generasi hari ini.</p>
+        </div>
+    </section>
+
+    <!-- Section Kalkulator -->
+    <section id="checkout" class="calculator-section">
+        <div class="calc-container">
+            <h2 class="section-title">Hitung Pesananmu</h2>
+            <div class="calc-form">
+                <label for="bookSelect">Pilih Buku:</label>
+                <select id="bookSelect">
+                    <option value="85000">The Picture of Dorian Gray (Rp 85.000)</option>
+                    <option value="95000">Pride and Prejudice (Rp 95.000)</option>
+                    <option value="75000">Kumpulan Puisi Kuno (Rp 75.000)</option>
+                    <option value="80000">Leaves of Grass (Rp 80.000)</option>
+                    <option value="120000">Meditations - Marcus Aurelius (Rp 120.000)</option>
+                    <option value="110000">Beyond Good and Evil (Rp 110.000)</option>
+                </select>
+
+                <label for="qtyInput">Jumlah (Buku):</label>
+                <input type="number" id="qtyInput" value="1" min="1">
+
+                <button class="btn-primary" onclick="hitungTotal()">Hitung Total</button>
+
+                <div class="total-result" id="totalResult">
+                    Total: Rp 0
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pop-up Modal Detail Buku -->
+    <div id="bookModal" class="modal-backdrop" onclick="closeModalOutside(event)">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-badge">Detail Buku</div>
+            <h2 id="modalTitle">Judul Buku</h2>
+            <p class="modal-author" id="modalAuthor">Penulis</p>
+            <p class="modal-desc" id="modalDesc">Deskripsi buku...</p>
+            <div class="modal-price" id="modalPrice">Rp 0</div>
+            <button class="btn-primary w-100" onclick="selectBookForCalc()">Pilih & Hitung Pesanan</button>
+        </div>
+    </div>
+  
+
+    <!-- Tombol Order WhatsApp -->
+    <button class="btn-wa" onclick="pesanWhatsApp()">📱 Beli via WhatsApp</button>
+</div>
+
+<!-- Section Kontak & Lokasi Toko (Baru) -->
+<section id="contact">
+    <h2 class="section-title">Kunjungi & Hubungi Kami</h2>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Perpustakaan & Toko Fisik</h3>
+            <p>📍 Jl. Pemuda No. 102, Semarang, Jawa Tengah</p>
+            <p>🕒 Senin - Sabtu: 09.00 - 21.00 WIB</p>
+            <p>✉️ halo@terrabook.id</p>
+            <p>📞 +6285-7049-82566</p>
+            <a href="https://wa.me/6285704982566" target="_blank" class="btn-primary mt-3">Chat Admin WhatsApp</a>
+        </div>
+        <div class="contact-map">
+            <iframe src="https://maps.google.com/maps?q=UDINUS%20Semarang&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Terra Book</h3>
+            <p>"Buku adalah cermin; jika yang melihat ke dalamnya adalah seekor kera, kamu tak bisa berharap yang memantul adalah kelinci."</p>
+            <p>&copy; 2026 Sofia Ayu Lestari - Tugas UTS Pemrograman Web.</p>
+        </div>
+    </footer>
+
+    <!-- Jalur JS di dalam folder js -->
+    <script src="js/script.js"></script>
+</body>
+</html>
